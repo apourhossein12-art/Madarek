@@ -8,6 +8,7 @@ import FilterControls from '@/components/FilterControls';
 import CompressionPanel from '@/components/CompressionPanel';
 import UniversityGuideModal from '@/components/UniversityGuideModal';
 import SaveModal from '@/components/SaveModal';
+import GitHubModal from '@/components/GitHubModal';
 import {
   DocumentItem,
   DocumentAdjustment,
@@ -25,6 +26,7 @@ export default function DocumentScannerPage() {
   const [isOpenCvLoaded, setIsOpenCvLoaded] = useState(false);
   const [guideModalOpen, setGuideModalOpen] = useState(false);
   const [saveModalOpen, setSaveModalOpen] = useState(false);
+  const [githubModalOpen, setGithubModalOpen] = useState(false);
   const [viewTab, setViewTab] = useState<'crop' | 'preview'>('crop');
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -391,6 +393,7 @@ export default function DocumentScannerPage() {
         darkMode={darkMode}
         onToggleDarkMode={toggleDarkMode}
         onOpenGuide={() => setGuideModalOpen(true)}
+        onOpenGitHub={() => setGithubModalOpen(true)}
         isOpenCvLoaded={isOpenCvLoaded}
       />
 
@@ -444,10 +447,32 @@ export default function DocumentScannerPage() {
         )}
       </main>
 
+      {/* Footer with GitHub link */}
+      <footer className="mt-auto border-t border-slate-200 bg-white/60 py-3 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-400">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4">
+          <div>
+            اسکنر هوشمند مدارک دانشگاهی ایران • پردازش ۱۰۰٪ محلی درون مرورگر
+          </div>
+          <button
+            type="button"
+            onClick={() => setGithubModalOpen(true)}
+            className="flex items-center gap-1.5 font-semibold text-slate-700 hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-400 transition"
+          >
+            <span>سورس‌کد پروژه در GitHub</span>
+          </button>
+        </div>
+      </footer>
+
       {/* University Rules Guide Modal */}
       <UniversityGuideModal
         isOpen={guideModalOpen}
         onClose={() => setGuideModalOpen(false)}
+      />
+
+      {/* GitHub Source Code & Clone Modal */}
+      <GitHubModal
+        isOpen={githubModalOpen}
+        onClose={() => setGithubModalOpen(false)}
       />
 
       {/* High-Res Save & Mobile Long Press Modal */}

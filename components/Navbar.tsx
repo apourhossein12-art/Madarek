@@ -1,12 +1,13 @@
 'use client';
 
 import React from 'react';
-import { ShieldCheck, HelpCircle, Sun, Moon, GraduationCap, Sparkles } from 'lucide-react';
+import { ShieldCheck, HelpCircle, Sun, Moon, GraduationCap, Sparkles, Github } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
   onToggleDarkMode: () => void;
   onOpenGuide: () => void;
+  onOpenGitHub: () => void;
   isOpenCvLoaded: boolean;
 }
 
@@ -14,6 +15,7 @@ export default function Navbar({
   darkMode,
   onToggleDarkMode,
   onOpenGuide,
+  onOpenGitHub,
   isOpenCvLoaded,
 }: NavbarProps) {
   return (
@@ -40,7 +42,7 @@ export default function Navbar({
         </div>
 
         {/* Action badges & Toggles */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
           {/* OpenCV Status indicator */}
           <div
             title={isOpenCvLoaded ? 'موتور پردازش تصویر OpenCV فعال است' : 'در حال بارگذاری هوش مصنوعی OpenCV...'}
@@ -55,11 +57,23 @@ export default function Navbar({
           {/* Privacy badge */}
           <div
             title="پردازش تصاویر ۱۰۰٪ درون مرورگر شما انجام می‌شود و هیچ مدرکی به اینترنت ارسال نخواهد شد."
-            className="flex items-center gap-1.5 rounded-lg bg-teal-500/10 px-2.5 py-1 text-xs font-medium text-teal-700 dark:text-teal-300 border border-teal-500/20"
+            className="hidden sm:flex items-center gap-1.5 rounded-lg bg-teal-500/10 px-2.5 py-1 text-xs font-medium text-teal-700 dark:text-teal-300 border border-teal-500/20"
           >
             <ShieldCheck className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
-            <span className="hidden sm:inline">۱۰۰٪ محلی و امن</span>
+            <span className="hidden md:inline">۱۰۰٪ محلی و امن</span>
           </div>
+
+          {/* GitHub Source Link Button */}
+          <button
+            type="button"
+            onClick={onOpenGitHub}
+            className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-750 transition"
+            title="سورس‌کد و مخزن گیت‌هاب (GitHub)"
+            aria-label="مشاهده سورس‌کد در گیت‌هاب"
+          >
+            <Github className="h-4 w-4 text-slate-900 dark:text-white" />
+            <span className="hidden xs:inline">GitHub</span>
+          </button>
 
           {/* University Guide button */}
           <button
@@ -69,7 +83,7 @@ export default function Navbar({
             aria-label="راهنمای استانداردهای دانشگاهی"
           >
             <HelpCircle className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-            <span className="hidden xs:inline">راهنمای سایت دانشگاه</span>
+            <span className="hidden md:inline">راهنمای سایت دانشگاه</span>
           </button>
 
           {/* Dark / Light Toggle */}
