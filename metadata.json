@@ -1,0 +1,8 @@
+{
+  "name": "اسکنر مدارک دانشگاهی ایران | DocScan Iran",
+  "description": "ابزار هوشمند اسکن، تصحیح پرسپکتیو، حذف سایه، افزایش خوانایی و کنترل دقیق حجم فایل مدارک برای سامانه‌های دانشگاهی (آزمون، سنجش، گلستان)",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
